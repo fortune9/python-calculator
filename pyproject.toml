@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-calculator-fortune9"
+version = "0.1.0"
+description = "A simple calculator package with UI capabilities"
+keywords = ["calculator", "arithmetic", "streamlit", "dash", "math"]
+authors = [
+    {name = "Zhenguo Zhang", email = "zhangz.sci@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/fortune9/python-calculator"
+"Repository" = "https://github.com/fortune9/python-calculator"
+"Issues" = "https://github.com/fortune9/python-calculator/issues"
+
+[project.optional-dependencies]
+streamlit = ["streamlit>=1.28.0"]
+dash = ["dash>=2.14.0", "dash-bootstrap-components>=1.5.0"]
+dev = ["pytest>=7.0.0", "pytest-cov>=4.0.0"]
+all = ["streamlit>=1.28.0", "dash>=2.14.0", "dash-bootstrap-components>=1.5.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+pythonpath = ["src"]
