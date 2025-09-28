@@ -18,9 +18,8 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.13",
 ]
 
 [project.urls]
@@ -31,12 +30,51 @@ classifiers = [
 [project.optional-dependencies]
 streamlit = ["streamlit>=1.28.0"]
 dash = ["dash>=2.14.0", "dash-bootstrap-components>=1.5.0"]
-dev = ["pytest>=7.0.0", "pytest-cov>=4.0.0"]
+dev = [
+        "pytest>=7.0.0",
+        "pytest-cov>=4.0.0",
+        "black>=23.0.0",
+        "flake8>=6.0.0",
+        "isort>=5.12.0",
+        "pre-commit>=3.0.0",
+        "twine>=4.0.0",
+        "mypy>=1.0.0",
+        "types-requests",
+        "types-setuptools",
+        "types-PyYAML"
+    ]
 all = ["streamlit>=1.28.0", "dash>=2.14.0", "dash-bootstrap-components>=1.5.0"]
 
-[tool.pytest.ini_options]
+[tool.pytest.ini.options]
 testpaths = ["tests"]
+pythonpath = ["src"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-pythonpath = ["src"]
+addopts = [
+    "--cov=src/python_calculator",
+    "--cov-report=html",
+    "--cov-report=term-missing",
+    "--verbose"
+]
+
+[tool.coverage.run]
+source = ["src/python_calculator"]
+omit = [
+    "*/test_*",
+    "*/__pycache__/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod"
+]

@@ -18,7 +18,13 @@ A simple calculator package with UI capabilities built using Python.
 pip install git+https://github.com/fortune9/python-calculator.git
 ```
 
-### With UI dependencies:
+### To install from TestPyPI:
+
+```bash
+pip install --index-url https://test.pypi.org/simple/ --no-deps python-calculator-fortune9
+```
+
+### With UI dependencies (not working yet):
 
 ```bash
 

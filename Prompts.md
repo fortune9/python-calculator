@@ -114,7 +114,7 @@ print('2 ^ 3 =', calc.calculate('2 ^ 3'))
 pip uninstall python-calculator
 ```
 
-#### Create a TestPyPI account 
+#### Create a TestPyPI account
 
 Do it at https://test.pypi.org/account/register/
 and get your API token at https://test.pypi.org/manage/account/token/.
@@ -204,3 +204,7 @@ git tag v0.1.0
 git push origin main --tags
 ```
 
+## Add pre-commit hooks
+
+After I pushed the code to GitHub, I found that the git actions workflow
+failed because of linting errors. To prevent this from happening in the future, I decided to add pre-commit hooks to the repository for linting and formatting.

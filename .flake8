@@ -1,0 +1,18 @@
+[flake8]
+max-line-length = 88
+extend-ignore = E203, W503, W504, E501
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    *.egg-info,
+    *.pyc,
+    *.pyo,
+    .mypy_cache,
+    .pytest_cache,
+    .venv,
+    venv
+
+# Maximum complexity
+max-complexity = 18

@@ -5,6 +5,6 @@ __author__ = "Zhenguo Zhang"
 __email__ = "zhangz.sci@gmail.com"
 
 from .calculator import Calculator
-from .ui import StreamlitUI, DashUI
+from .ui import DashUI, StreamlitUI
 
 __all__ = ["Calculator", "StreamlitUI", "DashUI"]
