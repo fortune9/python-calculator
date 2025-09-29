@@ -3,35 +3,23 @@
 
 from .calculator import Calculator
 
-try:
-    import streamlit as st
-
-    STREAMLIT_AVAILABLE = True
-except ImportError:
-    STREAMLIT_AVAILABLE = False
-
-try:
-    import dash
-    import dash_bootstrap_components as dbc
-    from dash import Input, Output, State, dcc, html
-
-    DASH_AVAILABLE = True
-except ImportError:
-    DASH_AVAILABLE = False
-
 
 class StreamlitUI:
     """Streamlit-based UI for the calculator."""
 
     def __init__(self) -> None:
-        if not STREAMLIT_AVAILABLE:
+        try:
+            import streamlit as st
+        except ImportError:
             raise ImportError(
                 "Streamlit is not installed. Install with: pip install streamlit"
             )
+        self.st = st
         self.calculator = Calculator()
 
     def render(self) -> None:
         """Render the Streamlit UI."""
+        st = self.st
         st.set_page_config(page_title="Python Calculator", page_icon="🧮")
         st.title("🧮 Python Calculator")
 
@@ -88,10 +76,22 @@ class DashUI:
     """Dash-based UI for the calculator."""
 
     def __init__(self) -> None:
-        if not DASH_AVAILABLE:
+        try:
+            import dash
+            import dash_bootstrap_components as dbc
+            from dash import Input, Output, State, dcc, html
+        except ImportError:
             raise ImportError(
                 "Dash is not installed. Install with: pip install dash dash-bootstrap-components"
             )
+        self.dash = dash
+        self.dbc = dbc
+        self.Input = Input
+        self.Output = Output
+        self.State = State
+        self.dcc = dcc
+        self.html = html
+
         self.calculator = Calculator()
         self.app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
         self._setup_layout()
@@ -99,6 +99,9 @@ class DashUI:
 
     def _setup_layout(self) -> None:
         """Setup the Dash layout."""
+        dbc = self.dbc
+        html = self.html
+        dcc = self.dcc
         self.app.layout = dbc.Container(
             [
                 dbc.Row(
@@ -254,6 +257,11 @@ class DashUI:
 
     def _setup_callbacks(self) -> None:
         """Setup Dash callbacks."""
+        Output = self.Output
+        Input = self.Input
+        State = self.State
+        dbc = self.dbc
+        dash = self.dash
 
         @self.app.callback(
             Output("result-output", "children"),
