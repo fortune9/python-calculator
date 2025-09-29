@@ -2,6 +2,9 @@
 
 A simple calculator package with UI capabilities built using Python.
 
+> [! IMPORTANT]
+> The code is generated using AI (DeepSeek) and may contain errors. To see the prompts used, please refer to [Prompts.md](Prompts.md).
+
 ## Features
 
 - Basic arithmetic operations (addition, subtraction, multiplication, division, power)
